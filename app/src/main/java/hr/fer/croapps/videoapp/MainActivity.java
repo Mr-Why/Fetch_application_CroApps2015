@@ -55,9 +55,6 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 v.playSoundEffect(SoundEffectConstants.CLICK);
                 if (searchText.getCurrentTextColor()== Color.BLACK && searchText.getText().toString().length()>0) {
-                    Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                    intent.putExtra("string", searchText.getText().toString());
-                    //startActivity(intent);
                     target_op = Target_Translate;
                     v.startAnimation(animTranslate);
                 }
@@ -77,6 +74,7 @@ public class MainActivity extends ActionBarActivity {
         public void onAnimationEnd(Animation animation) {
             Intent intent = new Intent(MainActivity.this,SecondActivity.class);
             intent.putExtra(KEY_ANIM, target_op);
+            intent.putExtra("string", searchText.getText().toString());
             startActivity(intent);
         }
         @Override
